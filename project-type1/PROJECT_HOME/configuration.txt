@@ -1,0 +1,57 @@
+
+# JVM Options
+##  
+ -DPROJECT_HOME=${workspace_loc}/project-type1/PROJECT_HOME
+ 
+ 
+# Tomcat Datasource
+## mysql
+<Resource
+	name="jdbc/project-type1-ds" auth="Container" type="javax.sql.DataSource"
+	driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://127.0.0.1:3306/project_type1"
+	username="root" password="00000000" maxActive="20" maxIdle="10"
+	maxWait="-1" />
+
+## mysql
+driverClassName="com.mysql.jdbc.Driver"
+url="jdbc:mysql://127.0.0.1:3306/project_type1"
+
+## mariadb
+driverClassName="org.mariadb.jdbc.Driver"
+url="jdbc:mariadb://127.0.0.1:3306/project_type1"
+-------------------------------------------------------------------------------
+CREATE TABLE `peyto_frame`.`contact` (
+  `_id` INT NOT NULL COMMENT '',
+  `name` VARCHAR(255) NULL COMMENT '',
+  `tel` VARCHAR(255) NULL COMMENT '',
+  PRIMARY KEY (`_id`)  COMMENT '');
+-------------------------------------------------------------------------------
+
+## postgresql
+driverClassName="org.postgresql.Driver"
+url="jdbc:postgresql://localhost:5432/project_type1"
+
+## sqlite3
+driverClassName="org.sqlite.JDBC"
+url="jdbc:sqlite:D:/db/project.db"
+-------------------------------------------------------------------------------
+CREATE TABLE contact (_id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, tel TEXT);
+-------------------------------------------------------------------------------
+<Resource
+	name="jdbc/project-type1-ds" auth="Container" type="javax.sql.DataSource"
+	driverClassName="org.sqlite.JDBC" 
+	url="jdbc:sqlite:D:/projects/java-spring-mvc-web-app-template/project-type1/src/test/resources/project.db"
+	maxActive="20" maxIdle="10" maxWait="-1" />
+-------------------------------------------------------------------------------
+
+## oracle
+driverClassName="oracle.jdbc.driver.OracleDriver" 
+url="jdbc:oracle:thin:@127.0.0.1:1521:orcl"
+
+## mssql
+driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+url="jdbc:sqlserver://127.0.0.1:1433;databaseName=project_type1"
+
+
+
+
