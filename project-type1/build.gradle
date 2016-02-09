@@ -75,5 +75,10 @@ test.doFirst {
 		from 'PROJECT_HOME/conf'
 		into 'build/resources/PROJECT_HOME/conf'	
 	}
+	println 'copyied from PROJECT_HOME/conf to build/resources/PROJECT_HOME/conf'  
 }
 
+test.doLast {
+	delete 'build/resources/PROJECT_HOME'
+	println 'deleted build/resources/PROJECT_HOME'
+}
