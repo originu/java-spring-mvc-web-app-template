@@ -9,22 +9,71 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+
+// JDK 8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+	mavenCentral()
 }
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
-    // The production code uses the SLF4J logging API at compile time
-    compile 'org.slf4j:slf4j-api:1.7.13'
 
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
+    
+    
+    // web
+	compile 'javax.servlet:jstl:1.2'
+
+	// spring
+	compile 'org.springframework:spring-webmvc:4.2.4.RELEASE'
+	compile 'org.springframework:spring-test:4.2.4.RELEASE'
+	compile 'org.springframework:spring-jdbc:4.2.4.RELEASE'
+	
+
+    // The production code uses the SLF4J logging API at compile time
+	// compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'ch.qos.logback:logback-classic:1.1.3'
+	compile 'org.logback-extensions:logback-ext-spring:0.1.4'
+	
+	// json
+    compile 'com.fasterxml.jackson.core:jackson-core:2.5.3'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
+	
+
+	// mybatis	
+	compile 'org.mybatis:mybatis:3.3.0'
+	compile 'org.mybatis:mybatis-spring:1.2.3'
+
+	// db driver
+	compile 'org.mariadb.jdbc:mariadb-java-client:1.1.7'	// mariadb
+	//compile ''org.postgresql:postgresql:9.4.1207'			// postgresql
+	//compile 'mysql:mysql-connector-java:5.1.38'			// mysql
+	//compile ''org.xerial:sqlite-jdbc:3.8.11.2''			// sqlite
+	//compile 'com.oracle:ojdbc14:10.2.0.4.0'				// oracle
+	//compile 'com.microsoft:sqljdbc4:3.0'					// mssql ( JDK 1.6 + )
+
 }
+
+// when being tested test classes, test classes refer to the PROJECT_HOME/conf files
+// this task is called before calling test task.
+test.doFirst {
+	copy {
+		from 'PROJECT_HOME/conf'
+		into 'build/resources/PROJECT_HOME/conf'	
+	}
+}
+
