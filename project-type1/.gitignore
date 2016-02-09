@@ -1,2 +1,8 @@
 /bin
 /build
+.settings
+.gradle
+.classpath
+.project
+PROJECT_HOME/logs
+PROJECT_HOME/dist
