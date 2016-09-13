@@ -9,18 +9,18 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd ">
 
+	<!-- 
 	<bean id="projectDatasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"	value="org.mariadb.jdbc.Driver"  />
 		<property name="url" 				value="jdbc:mariadb://192.168.137.110:3306/peyto_frame"/>
 		<property name="username" 			value="peyto"/>
 		<property name="password"			value="000000"/>
 	</bean>
-	<!-- 
+	-->
 	<bean id="projectDatasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName"	value="org.sqlite.JDBC"  />
 		<property name="url" 				value="jdbc:sqlite:./src/test/resources/project.db"/>
 	</bean>
-	-->
 	
 	<bean id="projectTransactionManager" 
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
