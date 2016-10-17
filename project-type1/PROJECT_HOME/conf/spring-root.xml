@@ -10,7 +10,7 @@
  
  	<context:property-placeholder location="file:${PROJECT_HOME}/conf/server-config.properties"/>
  
-   	<import resource="file:${PROJECT_HOME}/conf/spring-security.xml" />
+    <import resource="file:${PROJECT_HOME}/conf/spring-mvc.xml" />
   	<import resource="file:${PROJECT_HOME}/conf/spring-service.xml" />
  	<import resource="file:${PROJECT_HOME}/conf/spring-datasource.xml" />
  

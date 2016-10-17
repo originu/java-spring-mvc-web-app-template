@@ -10,22 +10,24 @@
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
  
-	<bean id="templateResolver"
-		class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+	<bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
 		<property name="prefix" value="/WEB-INF/templates/" />
 		<property name="suffix" value=".html" />
 		<property name="templateMode" value="HTML" />
+		<property name="cacheable" value="false" />
 	</bean>
-
+	
 	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
 		<property name="templateResolver" ref="templateResolver" />
 	</bean>
-
-	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
-		<property name="templateEngine" ref="templateEngine" />
-	</bean>
  
+	<bean id="viewResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
+		<property name="CharacterEncoding" value="UTF-8" />
+	</bean>
+
 	<mvc:resources mapping="/resources/**" location="file:${PROJECT_HOME}/resources/" />
+	<mvc:resources mapping="/res/**" location="/res/" />
 	<mvc:annotation-driven />
 	 
 	<context:component-scan base-package="project.type1.controller" />

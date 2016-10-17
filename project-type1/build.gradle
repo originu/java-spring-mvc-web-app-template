@@ -43,7 +43,9 @@ dependencies {
 
 
 	// spring
-	compile 'org.springframework:spring-webmvc:4.3.2.RELEASE'
+	compile ('org.springframework:spring-webmvc:4.3.2.RELEASE') {
+		 exclude group: 'commons-logging', module: 'commons-logging'
+	}
 	compile 'org.springframework:spring-test:4.3.2.RELEASE'
 	compile 'org.springframework:spring-jdbc:4.3.2.RELEASE'
 
@@ -74,7 +76,7 @@ dependencies {
 	
 
 	// mybatis	
-	compile 'org.mybatis:mybatis:3.3.0'
+	compile ('org.mybatis:mybatis:3.3.0')
 	compile 'org.mybatis:mybatis-spring:1.2.3'
 
 
@@ -82,7 +84,7 @@ dependencies {
 	//compile 'org.mariadb.jdbc:mariadb-java-client:1.1.7'	// mariadb
 	//compile ''org.postgresql:postgresql:9.4.1207'			// postgresql
 	//compile 'mysql:mysql-connector-java:5.1.38'			// mysql
-	compile 'org.xerial:sqlite-jdbc:3.8.11.2'			// sqlite
+	compile 'org.xerial:sqlite-jdbc:3.8.11.2'				// sqlite
 	//compile 'com.oracle:ojdbc14:10.2.0.4.0'				// oracle
 	//compile 'com.microsoft:sqljdbc4:3.0'					// mssql ( JDK 1.6 + )
 

@@ -13,70 +13,54 @@
 		http://www.springframework.org/schema/security 
 		http://www.springframework.org/schema/security/spring-security.xsd ">
  	
- 	
+
+	<!-- http://www.baeldung.com/security-spring -->
  	<!-- http://websystique.com/spring-security/spring-security-4-hello-world-annotation-xml-example/ -->
- 	
  	<!-- https://www.mkyong.com/spring-security/spring-security-form-login-example/ -->
- 	
-<!-- 	<sec:http auto-config="true">
-		<sec:intercept-url pattern="/admin**" access="ROLE_USER" />
-		<sec:form-login
-		    login-page="/login"
-		    default-target-url="/welcome"
-			authentication-failure-url="/login?error"
-			login-processing-url="/j_spring_security_check"
-			username-parameter="username"
-			password-parameter="password" />
-		<sec:logout logout-success-url="/login?logout" />
-		enable csrf protection
-		<sec:csrf/>
-	</sec:http>
 	
-	<sec:authentication-manager>
-    <sec:authentication-provider>
-      <sec:user-service>
-        <sec:user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
-        <sec:user name="bob" password="bobspassword" authorities="ROLE_USER" />
-      </sec:user-service>
-    </sec:authentication-provider>
-  </sec:authentication-manager>
-	<sec:user-service>
-		<sec:user name="user" password="password" authorities="ROLE_USER" />
-	</sec:user-service> -->
+	<sec:http pattern="/res/**" security="none"/>
 
-<!-- 	<sec:http>
-		<sec:intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-		<sec:intercept-url pattern="/**" access="ROLE_USER" /> 
-		<sec:form-login/>
-		<sec:logout />
-	</sec:http>
-
-	<sec:authentication-manager>
-		<sec:authentication-provider>
-			<sec:user-service>
-				<sec:user name="jimi" password="0000" authorities="ROLE_USER, ROLE_ADMIN" />
-				<sec:user name="bob" password="0000" authorities="ROLE_USER" />
-			</sec:user-service>
-		</sec:authentication-provider>
-	</sec:authentication-manager> -->
-
-    <sec:http auto-config="true" >
-        <sec:intercept-url pattern="/" access="hasRole('USER')" />
-        <sec:intercept-url pattern="/home" access="permitAll" />
-        <sec:intercept-url pattern="/admin**" access="hasRole('ADMIN')" />
-        <sec:intercept-url pattern="/dba**" access="hasRole('ADMIN') and hasRole('DBA')" />
-        <sec:form-login login-page="/login"  authentication-failure-url="/Access_Denied" />
+    <sec:http use-expressions="true" auto-config="true">
+<!-- 		<sec:intercept-url pattern="/login*"     access="permitAll" /> -->
+<!-- 		<sec:intercept-url pattern="/**"     	access="hasRole('USER')" /> -->
+		
+		<sec:intercept-url pattern="/login*" access="isAnonymous()" />
+<!--       	<sec:intercept-url pattern="/**" 	 access="isAuthenticated()"/> -->
+		<sec:intercept-url pattern="/**"     	access="hasRole('USER')" />
+		
+<!-- 		<sec:intercept-url pattern="/**"     	access="hasRole('USER')" /> isAuthenticated -->
+<!--         <sec:intercept-url pattern="/admin**"	access="hasRole('ADMIN')" /> -->
+<!--         <sec:intercept-url pattern="/dba**"		access="hasRole('ADMIN') and hasRole('DBA')" /> -->
+<!--         <sec:form-login login-page="/login"  	authentication-failure-url="/Access_Denied" /> -->
+<!--         <sec:form-login/> -->
+        <sec:form-login
+               />
+<!--                login-page="/login" -->
+<!--                default-target-url="/admin/view/home" -->
+<!--                authentication-failure-url="/Access_Denied" -->
+		<sec:csrf disabled="true" />
     </sec:http>
+<!--     <sec:http auto-config="true" use-expressions="true"> -->
+<!-- 		<sec:intercept-url pattern="/"     		access="hasRole('USER')" /> -->
+<!--         <sec:intercept-url pattern="/admin**"	access="hasRole('ADMIN')" /> -->
+<!--         <sec:intercept-url pattern="/dba**"		access="hasRole('ADMIN') and hasRole('DBA')" /> -->
+<!-- #         <sec:form-login login-page="/login"  	authentication-failure-url="/Access_Denied" />  -->
+<!--         <sec:form-login -->
+<!--                login-page="/login" -->
+<!--                default-target-url="/admin/view/home" -->
+<!--                authentication-failure-url="/Access_Denied" -->
+<!--                always-use-default-target="false"/> -->
+<!-- 		<sec:csrf disabled="true" /> -->
+<!--     </sec:http> -->
   
     <sec:authentication-manager >
         <sec:authentication-provider>
             <sec:user-service>
-                <sec:user name="user"  password="0000"  authorities="ROLE_USER" />
+                <sec:user name="user"  password="0000" authorities="ROLE_USER" />
                 <sec:user name="admin" password="0000" authorities="ROLE_ADMIN" />
                 <sec:user name="dba"   password="0000" authorities="ROLE_ADMIN,ROLE_DBA" />
             </sec:user-service>
         </sec:authentication-provider>
     </sec:authentication-manager>
- 	
- 	
-</beans>
+ 
+ </beans>
